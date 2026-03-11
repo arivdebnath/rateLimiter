@@ -1,0 +1,11 @@
+rules:
+  - id: marketingMessagingRule
+    domain: messaging
+    descriptors:
+        - key: message_type
+          value: marketing
+          rate_limit:
+            unit: day
+            requests_per_unit: 5
+        - key: message_some
+          value: some
