@@ -1,9 +1,14 @@
 package com.distributed.rateLimiter;
 
+import com.distributed.rateLimiter.config.RuleConfig;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+@EnableConfigurationProperties(RuleConfig.class)
 public class RateLimiterApplication {
 
 	public static void main(String[] args) {

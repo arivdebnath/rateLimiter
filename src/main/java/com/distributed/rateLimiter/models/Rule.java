@@ -1,7 +1,5 @@
 package com.distributed.rateLimiter.models;
 
-public class Rule {
-    String id;
-    Integer limit;
-    Descriptor descriptor;
-}
+import java.util.List;
+
+public record Rule(String id, Integer limit, List<Descriptor> descriptors) {}

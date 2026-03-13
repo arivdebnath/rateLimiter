@@ -5,7 +5,12 @@ rules:
         - key: message_type
           value: marketing
           rate_limit:
-            unit: day
-            requests_per_unit: 5
-        - key: message_some
-          value: some
+            time_unit: seconds
+            allowed_limit: 5
+            time_limit: 60
+        - key: message_type_2
+          value: promotions
+          rate_limit:
+            time_unit: minutes
+            allowed_limit: 10
+            time_limit: 5
