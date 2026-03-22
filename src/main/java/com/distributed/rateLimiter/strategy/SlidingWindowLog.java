@@ -19,15 +19,15 @@ public class SlidingWindowLog implements RateLimitingStrategy{
 
         synchronized (set) {
             Long now = Instant.now().toEpochMilli();
+            Long windowStart = now- Duration.of(rateLimitValue.timeLimit(), getTimeUnit(rateLimitValue.timeUnit())).getSeconds() * 1000L;
 
-            TreeSet<Long> updatedSet = (TreeSet<Long>) set.tailSet(now - Duration.of(rateLimitValue.timeLimit(), getTimeUnit(rateLimitValue.timeUnit())).getSeconds() * 1000L);
+            set.headSet(windowStart).clear();
 
-            if (updatedSet.size() >= rateLimitValue.allowedLimit()) {
+            if (set.size() >= rateLimitValue.allowedLimit()) {
                 return false;
             }
 
             set.add(now);
-            rateMap.put(key, updatedSet);
         }
 
         return true;
