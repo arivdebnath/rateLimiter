@@ -27,7 +27,7 @@ public interface RateLimitingStrategy{
                 temporalUnit = ChronoUnit.DAYS;
                 break;
             case null, default:
-                break;
+                throw new IllegalArgumentException();
         }
         return temporalUnit;
     }
